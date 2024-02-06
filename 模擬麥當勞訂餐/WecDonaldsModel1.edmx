@@ -1,0 +1,328 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="WecDonaldsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="carts">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="product_id" Type="int" Nullable="false" />
+          <Property Name="amount" Type="int" Nullable="false" />
+          <Property Name="用餐方式" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="members">
+          <Key>
+            <PropertyRef Name="mId" />
+          </Key>
+          <Property Name="mId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="mAddr" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="birthday" Type="date" Nullable="false" />
+          <Property Name="mTel" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="permission" Type="int" Nullable="false" />
+          <Property Name="points" Type="int" Nullable="false" />
+          <Property Name="cash" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderForm">
+          <Key>
+            <PropertyRef Name="oNo" />
+          </Key>
+          <Property Name="oNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sNo" Type="int" Nullable="false" />
+          <Property Name="dNo" Type="int" />
+          <Property Name="oAddr" Type="nvarchar" MaxLength="100" />
+          <Property Name="time" Type="datetime" Nullable="false" />
+          <Property Name="oTel" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="mId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="products">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pname" Type="nvarchar" MaxLength="100" />
+          <Property Name="price" Type="int" />
+          <Property Name="pdesc" Type="nvarchar" MaxLength="500" />
+          <Property Name="pimage" Type="nvarchar" MaxLength="100" />
+          <Property Name="type" Type="int" />
+        </EntityType>
+        <EntityType Name="type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="typeName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_carts_members">
+          <End Role="members" Type="Self.members" Multiplicity="1" />
+          <End Role="carts" Type="Self.carts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="members">
+              <PropertyRef Name="mId" />
+            </Principal>
+            <Dependent Role="carts">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_carts_products">
+          <End Role="products" Type="Self.products" Multiplicity="1" />
+          <End Role="carts" Type="Self.carts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="carts">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_products_type">
+          <End Role="type" Type="Self.type" Multiplicity="0..1" />
+          <End Role="products" Type="Self.products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="products">
+              <PropertyRef Name="type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WecDonaldsModelStoreContainer">
+          <EntitySet Name="carts" EntityType="Self.carts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="members" EntityType="Self.members" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderForm" EntityType="Self.OrderForm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="products" EntityType="Self.products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type" EntityType="Self.type" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_carts_members" Association="Self.FK_carts_members">
+            <End Role="members" EntitySet="members" />
+            <End Role="carts" EntitySet="carts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_carts_products" Association="Self.FK_carts_products">
+            <End Role="products" EntitySet="products" />
+            <End Role="carts" EntitySet="carts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_products_type" Association="Self.FK_products_type">
+            <End Role="type" EntitySet="type" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WecDonaldsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="carts">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="amount" Type="Int32" Nullable="false" />
+          <Property Name="用餐方式" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="members" Relationship="Self.FK_carts_members" FromRole="carts" ToRole="members" />
+          <NavigationProperty Name="products" Relationship="Self.FK_carts_products" FromRole="carts" ToRole="products" />
+        </EntityType>
+        <EntityType Name="members">
+          <Key>
+            <PropertyRef Name="mId" />
+          </Key>
+          <Property Name="mId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="mAddr" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="birthday" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="mTel" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="permission" Type="Int32" Nullable="false" />
+          <Property Name="points" Type="Int32" Nullable="false" />
+          <Property Name="cash" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="carts" Relationship="Self.FK_carts_members" FromRole="members" ToRole="carts" />
+        </EntityType>
+        <EntityType Name="OrderForm">
+          <Key>
+            <PropertyRef Name="oNo" />
+          </Key>
+          <Property Name="oNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sNo" Type="Int32" Nullable="false" />
+          <Property Name="dNo" Type="Int32" />
+          <Property Name="oAddr" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="oTel" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="mId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="products">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="price" Type="Int32" />
+          <Property Name="pdesc" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="pimage" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="type" Type="Int32" />
+          <NavigationProperty Name="carts" Relationship="Self.FK_carts_products" FromRole="products" ToRole="carts" />
+          <NavigationProperty Name="type1" Relationship="Self.FK_products_type" FromRole="products" ToRole="type" />
+        </EntityType>
+        <EntityType Name="type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="typeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="products" Relationship="Self.FK_products_type" FromRole="type" ToRole="products" />
+        </EntityType>
+        <Association Name="FK_carts_members">
+          <End Role="members" Type="Self.members" Multiplicity="1" />
+          <End Role="carts" Type="Self.carts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="members">
+              <PropertyRef Name="mId" />
+            </Principal>
+            <Dependent Role="carts">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_carts_products">
+          <End Role="products" Type="Self.products" Multiplicity="1" />
+          <End Role="carts" Type="Self.carts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="carts">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_products_type">
+          <End Role="type" Type="Self.type" Multiplicity="0..1" />
+          <End Role="products" Type="Self.products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="products">
+              <PropertyRef Name="type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WecDonaldsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="carts" EntityType="Self.carts" />
+          <EntitySet Name="members" EntityType="Self.members" />
+          <EntitySet Name="OrderForm" EntityType="Self.OrderForm" />
+          <EntitySet Name="products" EntityType="Self.products" />
+          <EntitySet Name="type" EntityType="Self.type" />
+          <AssociationSet Name="FK_carts_members" Association="Self.FK_carts_members">
+            <End Role="members" EntitySet="members" />
+            <End Role="carts" EntitySet="carts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_carts_products" Association="Self.FK_carts_products">
+            <End Role="products" EntitySet="products" />
+            <End Role="carts" EntitySet="carts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_products_type" Association="Self.FK_products_type">
+            <End Role="type" EntitySet="type" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WecDonaldsModelStoreContainer" CdmEntityContainer="WecDonaldsEntities">
+          <EntitySetMapping Name="carts">
+            <EntityTypeMapping TypeName="WecDonaldsModel.carts">
+              <MappingFragment StoreEntitySet="carts">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="用餐方式" ColumnName="用餐方式" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="members">
+            <EntityTypeMapping TypeName="WecDonaldsModel.members">
+              <MappingFragment StoreEntitySet="members">
+                <ScalarProperty Name="mId" ColumnName="mId" />
+                <ScalarProperty Name="mName" ColumnName="mName" />
+                <ScalarProperty Name="mAddr" ColumnName="mAddr" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="birthday" ColumnName="birthday" />
+                <ScalarProperty Name="mTel" ColumnName="mTel" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="permission" ColumnName="permission" />
+                <ScalarProperty Name="points" ColumnName="points" />
+                <ScalarProperty Name="cash" ColumnName="cash" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderForm">
+            <EntityTypeMapping TypeName="WecDonaldsModel.OrderForm">
+              <MappingFragment StoreEntitySet="OrderForm">
+                <ScalarProperty Name="oNo" ColumnName="oNo" />
+                <ScalarProperty Name="sNo" ColumnName="sNo" />
+                <ScalarProperty Name="dNo" ColumnName="dNo" />
+                <ScalarProperty Name="oAddr" ColumnName="oAddr" />
+                <ScalarProperty Name="time" ColumnName="time" />
+                <ScalarProperty Name="oTel" ColumnName="oTel" />
+                <ScalarProperty Name="mId" ColumnName="mId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="products">
+            <EntityTypeMapping TypeName="WecDonaldsModel.products">
+              <MappingFragment StoreEntitySet="products">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="pname" ColumnName="pname" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="pdesc" ColumnName="pdesc" />
+                <ScalarProperty Name="pimage" ColumnName="pimage" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type">
+            <EntityTypeMapping TypeName="WecDonaldsModel.type">
+              <MappingFragment StoreEntitySet="type">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="typeName" ColumnName="typeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
