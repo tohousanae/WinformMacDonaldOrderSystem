@@ -117,7 +117,7 @@
             this.lbl訂單總價.Name = "lbl訂單總價";
             this.lbl訂單總價.Size = new System.Drawing.Size(311, 54);
             this.lbl訂單總價.TabIndex = 15;
-            this.lbl訂單總價.Text = "訂單總價 00000 元";
+            this.lbl訂單總價.Text = "訂單總價 0 元";
             this.lbl訂單總價.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl訂單總價.Click += new System.EventHandler(this.lbl訂單總價_Click);
             // 

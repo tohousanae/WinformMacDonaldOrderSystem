@@ -269,7 +269,7 @@ namespace 模擬麥當勞訂餐
             con.Close();
             Console.WriteLine($"外送費{外送費}");
             訂單總價 = 訂單總價 + 外送費;
-            lbl訂單總價.Text = $"訂單總價: 00{訂單總價.ToString()}元";
+            lbl訂單總價.Text = $"訂單總價: {訂單總價.ToString()}元";
         }
         void A區選餐數()
         {
@@ -528,12 +528,14 @@ namespace 模擬麥當勞訂餐
             }
 
             //訂單內容輸出
-            List<string> list訂單資訊 = new List<string>();
-            list訂單資訊.Add("********** 麥當勞明細 **********");
-            list訂單資訊.Add("---------------------------------");
-            list訂單資訊.Add($"訂購時間: {DateTime.Now}");
-            list訂單資訊.Add($"訂購人: {GlobalVar.使用者名稱}");
-            list訂單資訊.Add("========= << 訂購品項 >> ==========");
+            List<string> list訂單資訊 = new List<string>
+            {
+                "********** 麥當勞明細 **********",
+                "---------------------------------",
+                $"訂購時間: {DateTime.Now}",
+                $"訂購人: {GlobalVar.使用者名稱}",
+                "========= << 訂購品項 >> =========="
+            };
 
             //從購物車資料庫取得資料來做成收據
             SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);
