@@ -478,14 +478,15 @@ namespace 模擬麥當勞訂餐
             else
             {
                 送出訂單();
-                //輸出明細表();
+                輸出明細表();
+                MessageBox.Show("訂單已送出，謝謝光臨");
             }
         }
         void 送出訂單()
         {
             Random myRnd = new Random();
             int rndNum = myRnd.Next(1000, 10000);
-            string str檔名 = DateTime.Now.ToString("yyMMddHHmmss") + rndNum + "訂購檔.txt";
+            string str檔名 = DateTime.Now.ToString("yyMMddHHmmss") + rndNum + "明細表.txt";
             SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);
             string strSQL = "insert into OrderForm values (@NewUserId,@NewTime,@NewStatus,@NewDetail);";
             con.Open();
@@ -498,86 +499,96 @@ namespace 模擬麥當勞訂餐
             int rows = cmd.ExecuteNonQuery();
             con.Close();
             Console.WriteLine($"{rows} 個資料列受到影響");
-            MessageBox.Show("訂單已送出，謝謝光臨");
             this.Close();
         }
-        //void 輸出明細表()
-        //{
-        //    string str輸出檔案目錄 = @"C:\Users\iSpan\Documents\DotNet元件開發";
-        //    Random myRnd = new Random();
-        //    int rndNum = myRnd.Next(1000, 10000);
-        //    string str檔名 = DateTime.Now.ToString("yyMMddHHmmss") + rndNum + "訂購檔.txt";
-        //    string str完整檔案路徑 = str輸出檔案目錄 + @"\" + str檔名;
+        void 輸出明細表()
+        {
+            string str輸出檔案目錄 = @"C:\Users\iSpan\Documents\DotNet元件開發";
+            Random myRnd = new Random();
+            int rndNum = myRnd.Next(1000, 10000);
+            string str檔名 = DateTime.Now.ToString("yyMMddHHmmss") + rndNum + "明細表.txt";
+            string str完整檔案路徑 = str輸出檔案目錄 + @"\" + str檔名;
 
-        //    Console.WriteLine(str完整檔案路徑);
+            Console.WriteLine(str完整檔案路徑);
 
-        //    SaveFileDialog sfd = new SaveFileDialog();
-        //    sfd.InitialDirectory = str輸出檔案目錄;
-        //    sfd.FileName = str檔名;
-        //    sfd.Filter = "文字檔 Text File|*.txt";
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.InitialDirectory = str輸出檔案目錄;
+            sfd.FileName = str檔名;
+            sfd.Filter = "文字檔 Text File|*.txt";
 
-        //    DialogResult R = sfd.ShowDialog();
+            DialogResult R = sfd.ShowDialog();
 
-        //    if (R == DialogResult.OK)
-        //    {
-        //        str完整檔案路徑 = sfd.FileName;
-        //    }
-        //    else
-        //    {
-        //        return; //結束方法
-        //    }
+            if (R == DialogResult.OK)
+            {
+                str完整檔案路徑 = sfd.FileName;
+            }
+            else
+            {
+                return; //結束方法
+            }
 
-        //    //訂單內容輸出
-        //    List<string> list訂單資訊 = new List<string>();
-        //    list訂單資訊.Add("********** 冷飲店訂購單 **********");
-        //    list訂單資訊.Add("---------------------------------");
-        //    list訂單資訊.Add($"訂購時間: {DateTime.Now}");
-        //    list訂單資訊.Add($"訂購人: {GlobalVar.訂購人資訊}");
-        //    list訂單資訊.Add("========= << 訂購品項 >> ==========");
-        //    foreach (ArrayList 訂購單品 in GlobalVar.list訂購品項資料集合)
-        //    {
-        //        string 品項名稱 = (string)訂購單品[0];
-        //        int 單價 = (int)訂購單品[1];
-        //        int 杯數 = (int)訂購單品[2];
-        //        int 品項總價 = (int)訂購單品[3];
-        //        string 甜度 = (string)訂購單品[4];
-        //        string 冰塊 = (string)訂購單品[5];
-        //        string 加料 = (string)訂購單品[6];
+            //訂單內容輸出
+            List<string> list訂單資訊 = new List<string>();
+            list訂單資訊.Add("********** 麥當勞明細 **********");
+            list訂單資訊.Add("---------------------------------");
+            list訂單資訊.Add($"訂購時間: {DateTime.Now}");
+            list訂單資訊.Add($"訂購人: {GlobalVar.使用者名稱}");
+            list訂單資訊.Add("========= << 訂購品項 >> ==========");
 
-        //        string strInfo = string.Format("{0} {1}元 {2}杯 品項總價:{3} {4} {5} {6}", 品項名稱, 單價, 杯數, 品項總價, 甜度, 冰塊, 加料);
+            //從購物車資料庫取得資料來做成收據
+            SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);
+            con.Open();
+            string strSQL = "SELECT top 200 type.typeName as 商品類別,products.pname as 商品名稱,products.price as 單價,carts.amount as 數量,products.price * carts.amount as 項目總價 FROM (carts INNER JOIN products ON carts.product_id = products.id) INNER JOIN type ON products.type = type.id WHERE carts.user_id = @UserId order by 商品名稱;";
+            SqlCommand cmd = new SqlCommand(strSQL, con);
+            cmd.Parameters.AddWithValue("@UserId", GlobalVar.使用者id);
+            SqlDataReader reader = cmd.ExecuteReader();
 
-        //        list訂單資訊.Add(strInfo);
-        //    }
-        //    list訂單資訊.Add("===================================");
-        //    list訂單資訊.Add($" {lbl外帶.Text} {lbl買購物袋.Text} ");
-        //    list訂單資訊.Add("-----------------------------------");
-        //    list訂單資訊.Add($" {lbl訂單總價.Text} ");
-        //    list訂單資訊.Add("===================================");
-        //    list訂單資訊.Add("************* 謝謝光臨 *************");
+            while (reader.Read())
+            {
+                list訂單資訊.Add("===================================");
+                string 商品類別 = (string)reader["商品類別"];
+                string 商品名稱 = (string)reader["商品名稱"];
+                int 單價 = (int)reader["單價"];
+                int 數量 = (int)reader["數量"];
+                int 項目總價 = (int)reader["項目總價"];
+                string strInfo = string.Format($"商品類別：{商品類別}\n商品名稱：{商品名稱}\n{單價}\n{數量}\n{項目總價}");
 
-        //    System.IO.File.WriteAllLines(str完整檔案路徑, list訂單資訊, Encoding.UTF8);
+                list訂單資訊.Add(strInfo);
+                GlobalVar.購物車訂購筆數++;
+            }
+            reader.Close();
+            con.Close();
+            Console.WriteLine($"讀取{GlobalVar.購物車訂購筆數}筆資料");
+            //foreach (ArrayList 訂購單品 in GlobalVar.list訂購品項資料集合)
+            //{
+            //    string 品項名稱 = (string)訂購單品[0];
+            //    int 單價 = (int)訂購單品[1];
+            //    int 杯數 = (int)訂購單品[2];
+            //    int 品項總價 = (int)訂購單品[3];
+            //    string 甜度 = (string)訂購單品[4];
+            //    string 冰塊 = (string)訂購單品[5];
+            //    string 加料 = (string)訂購單品[6];
 
-        //    SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);
-        //    con.Open();
-        //    string strSQL = "SELECT top 200 type.typeName as 商品類別,products.pname as 商品名稱,products.price as 單價,carts.amount as 數量,products.price * carts.amount as 項目總價 FROM (carts INNER JOIN products ON carts.product_id = products.id) INNER JOIN type ON products.type = type.id WHERE carts.user_id = @UserId order by 商品名稱;";
-        //    SqlCommand cmd = new SqlCommand(strSQL, con);
-        //    cmd.Parameters.AddWithValue("@UserId", GlobalVar.使用者id);
-        //    SqlDataReader reader = cmd.ExecuteReader();
+            //    string strInfo = string.Format("{0} {1}元 {2}杯 品項總價:{3} {4} {5} {6}", 品項名稱, 單價, 杯數, 品項總價, 甜度, 冰塊, 加料);
 
-        //    while (reader.Read())
-        //    {
-        //        Console.WriteLine("===================================");
-        //        Console.WriteLine((string)reader["商品類別"]);
-        //        Console.WriteLine((string)reader["商品名稱"]);
-        //        Console.WriteLine((int)reader["單價"]);
-        //        Console.WriteLine((int)reader["數量"]);
-        //        Console.WriteLine((int)reader["項目總價"]);
-        //        GlobalVar.購物車訂購筆數++;
-        //    }
-        //    reader.Close();
-        //    con.Close();
-        //    Console.WriteLine($"讀取{GlobalVar.購物車訂購筆數}筆資料");
-        //}
+            //    list訂單資訊.Add(strInfo);
+            //}
+            list訂單資訊.Add("===================================");
+            list訂單資訊.Add($" 用餐方式：{cbox用餐方式.Text}");
+            list訂單資訊.Add($" 外送地址：{txt外送地址.Text}");
+            list訂單資訊.Add($" 連絡電話：{txt連絡電話.Text}");
+            list訂單資訊.Add($" 分店：{cbox分店.Text}");
+            list訂單資訊.Add($" 付款方式：{cbox付款方式.Text}");
+            list訂單資訊.Add($" 統一編號：{txt統編.Text}");
+            list訂單資訊.Add("-----------------------------------");
+            list訂單資訊.Add($" {lbl訂單總價.Text} ");
+            list訂單資訊.Add("===================================");
+            list訂單資訊.Add("************* 謝謝光臨 *************");
+
+            System.IO.File.WriteAllLines(str完整檔案路徑, list訂單資訊, Encoding.UTF8);
+
+            
+        }
         private void FormOrderList_Activated(object sender, EventArgs e)
         {
             Console.WriteLine("Form Activated !!");
