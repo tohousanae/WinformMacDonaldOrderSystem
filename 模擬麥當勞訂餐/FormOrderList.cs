@@ -559,20 +559,7 @@ namespace 模擬麥當勞訂餐
             reader.Close();
             con.Close();
             Console.WriteLine($"讀取{GlobalVar.購物車訂購筆數}筆資料");
-            //foreach (ArrayList 訂購單品 in GlobalVar.list訂購品項資料集合)
-            //{
-            //    string 品項名稱 = (string)訂購單品[0];
-            //    int 單價 = (int)訂購單品[1];
-            //    int 杯數 = (int)訂購單品[2];
-            //    int 品項總價 = (int)訂購單品[3];
-            //    string 甜度 = (string)訂購單品[4];
-            //    string 冰塊 = (string)訂購單品[5];
-            //    string 加料 = (string)訂購單品[6];
 
-            //    string strInfo = string.Format("{0} {1}元 {2}杯 品項總價:{3} {4} {5} {6}", 品項名稱, 單價, 杯數, 品項總價, 甜度, 冰塊, 加料);
-
-            //    list訂單資訊.Add(strInfo);
-            //}
             list訂單資訊.Add("===================================");
             list訂單資訊.Add($" 用餐方式：{cbox用餐方式.Text}");
             list訂單資訊.Add($" 外送地址：{txt外送地址.Text}");
