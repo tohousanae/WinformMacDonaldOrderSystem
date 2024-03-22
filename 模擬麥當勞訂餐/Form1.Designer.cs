@@ -52,24 +52,23 @@
             this.lblUserName = new System.Windows.Forms.Label();
             this.imageList商品圖檔 = new System.Windows.Forms.ImageList(this.components);
             this.btn新增商品 = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.btn離開系統 = new System.Windows.Forms.Button();
             this.btn超值A = new System.Windows.Forms.Button();
             this.btn點心 = new System.Windows.Forms.Button();
             this.btn飲料 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btn修改會員資料 = new System.Windows.Forms.Button();
             this.btn超值B = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btn超值全餐飲料 = new System.Windows.Forms.Button();
             this.btn查看購物車 = new System.Windows.Forms.Button();
+            this.btn我的訂單 = new System.Windows.Forms.Button();
             this.btn訂單管理 = new System.Windows.Forms.Button();
-            this.btnOrderManage = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
+            this.gbox員工專區 = new System.Windows.Forms.GroupBox();
+            this.btn會員管理 = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.gbox員工專區.SuspendLayout();
             this.SuspendLayout();
             // 
             // checkBox7
@@ -247,7 +246,7 @@
             // btn重新整理
             // 
             this.btn重新整理.Font = new System.Drawing.Font("微軟正黑體", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn重新整理.Location = new System.Drawing.Point(724, 259);
+            this.btn重新整理.Location = new System.Drawing.Point(885, 259);
             this.btn重新整理.Margin = new System.Windows.Forms.Padding(2);
             this.btn重新整理.Name = "btn重新整理";
             this.btn重新整理.Size = new System.Drawing.Size(137, 53);
@@ -259,7 +258,7 @@
             // btn列表模式
             // 
             this.btn列表模式.Font = new System.Drawing.Font("微軟正黑體", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn列表模式.Location = new System.Drawing.Point(724, 191);
+            this.btn列表模式.Location = new System.Drawing.Point(885, 191);
             this.btn列表模式.Margin = new System.Windows.Forms.Padding(2);
             this.btn列表模式.Name = "btn列表模式";
             this.btn列表模式.Size = new System.Drawing.Size(137, 53);
@@ -271,7 +270,7 @@
             // btn圖片模式
             // 
             this.btn圖片模式.Font = new System.Drawing.Font("微軟正黑體", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn圖片模式.Location = new System.Drawing.Point(724, 121);
+            this.btn圖片模式.Location = new System.Drawing.Point(885, 121);
             this.btn圖片模式.Margin = new System.Windows.Forms.Padding(2);
             this.btn圖片模式.Name = "btn圖片模式";
             this.btn圖片模式.Size = new System.Drawing.Size(137, 53);
@@ -288,7 +287,7 @@
             this.listView商品展示.Margin = new System.Windows.Forms.Padding(2);
             this.listView商品展示.Name = "listView商品展示";
             this.listView商品展示.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.listView商品展示.Size = new System.Drawing.Size(691, 477);
+            this.listView商品展示.Size = new System.Drawing.Size(852, 477);
             this.listView商品展示.TabIndex = 7;
             this.listView商品展示.UseCompatibleStateImageBehavior = false;
             this.listView商品展示.ItemActivate += new System.EventHandler(this.listView商品展示_ItemActivate);
@@ -326,67 +325,20 @@
             // btn新增商品
             // 
             this.btn新增商品.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btn新增商品.Font = new System.Drawing.Font("微軟正黑體", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn新增商品.Location = new System.Drawing.Point(724, 328);
+            this.btn新增商品.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btn新增商品.Location = new System.Drawing.Point(41, 56);
             this.btn新增商品.Margin = new System.Windows.Forms.Padding(2);
             this.btn新增商品.Name = "btn新增商品";
-            this.btn新增商品.Size = new System.Drawing.Size(137, 53);
+            this.btn新增商品.Size = new System.Drawing.Size(123, 44);
             this.btn新增商品.TabIndex = 14;
             this.btn新增商品.Text = "新增商品";
             this.btn新增商品.UseVisualStyleBackColor = false;
             this.btn新增商品.Click += new System.EventHandler(this.btn新增商品_Click);
             // 
-            // groupBox1
-            // 
-            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.groupBox1.Controls.Add(this.checkBox3);
-            this.groupBox1.Controls.Add(this.checkBox2);
-            this.groupBox1.Controls.Add(this.checkBox1);
-            this.groupBox1.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.groupBox1.Location = new System.Drawing.Point(882, 121);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(290, 220);
-            this.groupBox1.TabIndex = 16;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "用餐方式";
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(74, 167);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(80, 34);
-            this.checkBox3.TabIndex = 2;
-            this.checkBox3.Text = "外送";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(74, 109);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(80, 34);
-            this.checkBox2.TabIndex = 1;
-            this.checkBox2.Text = "外帶";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(74, 50);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(80, 34);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "內用";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
             // btn離開系統
             // 
             this.btn離開系統.Font = new System.Drawing.Font("微軟正黑體", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn離開系統.Location = new System.Drawing.Point(882, 606);
+            this.btn離開系統.Location = new System.Drawing.Point(744, 611);
             this.btn離開系統.Margin = new System.Windows.Forms.Padding(2);
             this.btn離開系統.Name = "btn離開系統";
             this.btn離開系統.Size = new System.Drawing.Size(137, 53);
@@ -399,12 +351,12 @@
             // 
             this.btn超值A.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btn超值A.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn超值A.Location = new System.Drawing.Point(42, 37);
+            this.btn超值A.Location = new System.Drawing.Point(5, 37);
             this.btn超值A.Margin = new System.Windows.Forms.Padding(2);
             this.btn超值A.Name = "btn超值A";
-            this.btn超值A.Size = new System.Drawing.Size(169, 53);
+            this.btn超值A.Size = new System.Drawing.Size(224, 53);
             this.btn超值A.TabIndex = 17;
-            this.btn超值A.Text = "超值全餐A區";
+            this.btn超值A.Text = "超值全餐主餐(A區)";
             this.btn超值A.UseVisualStyleBackColor = false;
             this.btn超值A.Click += new System.EventHandler(this.btn超值A_Click);
             // 
@@ -412,7 +364,7 @@
             // 
             this.btn點心.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btn點心.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn點心.Location = new System.Drawing.Point(581, 37);
+            this.btn點心.Location = new System.Drawing.Point(706, 37);
             this.btn點心.Margin = new System.Windows.Forms.Padding(2);
             this.btn點心.Name = "btn點心";
             this.btn點心.Size = new System.Drawing.Size(77, 53);
@@ -425,7 +377,7 @@
             // 
             this.btn飲料.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.btn飲料.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn飲料.Location = new System.Drawing.Point(662, 37);
+            this.btn飲料.Location = new System.Drawing.Point(787, 37);
             this.btn飲料.Margin = new System.Windows.Forms.Padding(2);
             this.btn飲料.Name = "btn飲料";
             this.btn飲料.Size = new System.Drawing.Size(143, 53);
@@ -437,25 +389,39 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.groupBox3.Controls.Add(this.btn修改會員資料);
             this.groupBox3.Controls.Add(this.lblUserName);
             this.groupBox3.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.groupBox3.Location = new System.Drawing.Point(882, 347);
+            this.groupBox3.Location = new System.Drawing.Point(1029, 122);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(290, 254);
+            this.groupBox3.Size = new System.Drawing.Size(347, 259);
             this.groupBox3.TabIndex = 22;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "使用者資料";
+            this.groupBox3.Text = "會員專區";
+            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
+            // 
+            // btn修改會員資料
+            // 
+            this.btn修改會員資料.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btn修改會員資料.Location = new System.Drawing.Point(87, 206);
+            this.btn修改會員資料.Margin = new System.Windows.Forms.Padding(2);
+            this.btn修改會員資料.Name = "btn修改會員資料";
+            this.btn修改會員資料.Size = new System.Drawing.Size(189, 48);
+            this.btn修改會員資料.TabIndex = 54;
+            this.btn修改會員資料.Text = "修改會員資料";
+            this.btn修改會員資料.UseVisualStyleBackColor = true;
+            this.btn修改會員資料.Click += new System.EventHandler(this.btn修改會員資料_Click);
             // 
             // btn超值B
             // 
             this.btn超值B.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btn超值B.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn超值B.Location = new System.Drawing.Point(215, 37);
+            this.btn超值B.Location = new System.Drawing.Point(233, 37);
             this.btn超值B.Margin = new System.Windows.Forms.Padding(2);
             this.btn超值B.Name = "btn超值B";
-            this.btn超值B.Size = new System.Drawing.Size(170, 53);
+            this.btn超值B.Size = new System.Drawing.Size(232, 53);
             this.btn超值B.TabIndex = 18;
-            this.btn超值B.Text = "超值全餐B區";
+            this.btn超值B.Text = "超值全餐配餐(B區)";
             this.btn超值B.UseVisualStyleBackColor = false;
             this.btn超值B.Click += new System.EventHandler(this.btn超值B_Click);
             // 
@@ -470,75 +436,103 @@
             this.groupBox2.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.groupBox2.Location = new System.Drawing.Point(29, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1143, 104);
+            this.groupBox2.Size = new System.Drawing.Size(1347, 104);
             this.groupBox2.TabIndex = 23;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "餐點種類選單";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // btn超值全餐飲料
             // 
             this.btn超值全餐飲料.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btn超值全餐飲料.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn超值全餐飲料.Location = new System.Drawing.Point(389, 37);
+            this.btn超值全餐飲料.Location = new System.Drawing.Point(469, 37);
             this.btn超值全餐飲料.Margin = new System.Windows.Forms.Padding(2);
             this.btn超值全餐飲料.Name = "btn超值全餐飲料";
-            this.btn超值全餐飲料.Size = new System.Drawing.Size(188, 53);
+            this.btn超值全餐飲料.Size = new System.Drawing.Size(233, 53);
             this.btn超值全餐飲料.TabIndex = 21;
-            this.btn超值全餐飲料.Text = "飲料(超值全餐)";
+            this.btn超值全餐飲料.Text = "超值全餐飲料(C區)";
             this.btn超值全餐飲料.UseVisualStyleBackColor = false;
+            this.btn超值全餐飲料.Click += new System.EventHandler(this.btn超值全餐飲料_Click);
             // 
             // btn查看購物車
             // 
             this.btn查看購物車.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn查看購物車.Location = new System.Drawing.Point(29, 606);
+            this.btn查看購物車.Location = new System.Drawing.Point(11, 611);
             this.btn查看購物車.Margin = new System.Windows.Forms.Padding(2);
             this.btn查看購物車.Name = "btn查看購物車";
-            this.btn查看購物車.Size = new System.Drawing.Size(169, 51);
+            this.btn查看購物車.Size = new System.Drawing.Size(247, 51);
             this.btn查看購物車.TabIndex = 51;
-            this.btn查看購物車.Text = "查看購物車";
+            this.btn查看購物車.Text = "查看購物車(0)";
             this.btn查看購物車.UseVisualStyleBackColor = true;
             this.btn查看購物車.Click += new System.EventHandler(this.btn查看購物車_Click);
             // 
+            // btn我的訂單
+            // 
+            this.btn我的訂單.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btn我的訂單.Location = new System.Drawing.Point(262, 611);
+            this.btn我的訂單.Margin = new System.Windows.Forms.Padding(2);
+            this.btn我的訂單.Name = "btn我的訂單";
+            this.btn我的訂單.Size = new System.Drawing.Size(159, 51);
+            this.btn我的訂單.TabIndex = 52;
+            this.btn我的訂單.Text = "我的訂單";
+            this.btn我的訂單.UseVisualStyleBackColor = true;
+            this.btn我的訂單.Click += new System.EventHandler(this.btn我的訂單_Click);
+            // 
             // btn訂單管理
             // 
+            this.btn訂單管理.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btn訂單管理.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn訂單管理.Location = new System.Drawing.Point(214, 606);
+            this.btn訂單管理.Location = new System.Drawing.Point(182, 56);
             this.btn訂單管理.Margin = new System.Windows.Forms.Padding(2);
             this.btn訂單管理.Name = "btn訂單管理";
-            this.btn訂單管理.Size = new System.Drawing.Size(159, 51);
-            this.btn訂單管理.TabIndex = 52;
-            this.btn訂單管理.Text = "我的訂單";
-            this.btn訂單管理.UseVisualStyleBackColor = true;
+            this.btn訂單管理.Size = new System.Drawing.Size(122, 45);
+            this.btn訂單管理.TabIndex = 53;
+            this.btn訂單管理.Text = "訂單管理";
+            this.btn訂單管理.UseVisualStyleBackColor = false;
             this.btn訂單管理.Click += new System.EventHandler(this.btn訂單管理_Click);
             // 
-            // btnOrderManage
+            // gbox員工專區
             // 
-            this.btnOrderManage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnOrderManage.Font = new System.Drawing.Font("微軟正黑體", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnOrderManage.Location = new System.Drawing.Point(724, 390);
-            this.btnOrderManage.Margin = new System.Windows.Forms.Padding(2);
-            this.btnOrderManage.Name = "btnOrderManage";
-            this.btnOrderManage.Size = new System.Drawing.Size(137, 53);
-            this.btnOrderManage.TabIndex = 53;
-            this.btnOrderManage.Text = "訂單管理";
-            this.btnOrderManage.UseVisualStyleBackColor = false;
-            this.btnOrderManage.Click += new System.EventHandler(this.btnOrderManage_Click);
+            this.gbox員工專區.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.gbox員工專區.Controls.Add(this.btn會員管理);
+            this.gbox員工專區.Controls.Add(this.btn訂單管理);
+            this.gbox員工專區.Controls.Add(this.btn新增商品);
+            this.gbox員工專區.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.gbox員工專區.Location = new System.Drawing.Point(1029, 387);
+            this.gbox員工專區.Name = "gbox員工專區";
+            this.gbox員工專區.Size = new System.Drawing.Size(347, 281);
+            this.gbox員工專區.TabIndex = 55;
+            this.gbox員工專區.TabStop = false;
+            this.gbox員工專區.Text = "員工專區";
+            this.gbox員工專區.Enter += new System.EventHandler(this.gbox員工專區_Enter);
+            // 
+            // btn會員管理
+            // 
+            this.btn會員管理.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btn會員管理.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btn會員管理.Location = new System.Drawing.Point(41, 117);
+            this.btn會員管理.Margin = new System.Windows.Forms.Padding(2);
+            this.btn會員管理.Name = "btn會員管理";
+            this.btn會員管理.Size = new System.Drawing.Size(123, 44);
+            this.btn會員管理.TabIndex = 54;
+            this.btn會員管理.Text = "會員管理";
+            this.btn會員管理.UseVisualStyleBackColor = false;
+            this.btn會員管理.Click += new System.EventHandler(this.btn會員管理_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(1477, 678);
-            this.Controls.Add(this.btnOrderManage);
-            this.Controls.Add(this.btn訂單管理);
+            this.ClientSize = new System.Drawing.Size(1388, 680);
+            this.Controls.Add(this.gbox員工專區);
+            this.Controls.Add(this.btn我的訂單);
             this.Controls.Add(this.btn查看購物車);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.listView商品展示);
             this.Controls.Add(this.btn離開系統);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btn新增商品);
             this.Controls.Add(this.btn圖片模式);
             this.Controls.Add(this.btn列表模式);
             this.Controls.Add(this.label1);
@@ -548,11 +542,10 @@
             this.Activated += new System.EventHandler(this.Form1_Activated);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.gbox員工專區.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -582,10 +575,6 @@
         private System.Windows.Forms.Label lblUserName;
         private System.Windows.Forms.ImageList imageList商品圖檔;
         private System.Windows.Forms.Button btn新增商品;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Button btn離開系統;
         private System.Windows.Forms.Button btn超值A;
         private System.Windows.Forms.Button btn點心;
@@ -594,9 +583,12 @@
         private System.Windows.Forms.Button btn超值B;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btn查看購物車;
+        private System.Windows.Forms.Button btn我的訂單;
         private System.Windows.Forms.Button btn訂單管理;
-        private System.Windows.Forms.Button btnOrderManage;
         private System.Windows.Forms.Button btn超值全餐飲料;
+        private System.Windows.Forms.Button btn修改會員資料;
+        private System.Windows.Forms.GroupBox gbox員工專區;
+        private System.Windows.Forms.Button btn會員管理;
     }
 }
 

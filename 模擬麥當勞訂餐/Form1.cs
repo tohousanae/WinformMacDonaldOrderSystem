@@ -17,12 +17,13 @@ namespace 模擬麥當勞訂餐
     public partial class Form1 : Form
     {
         //SQL語法查詢：https://www.1keydata.com/tw/sql/sqlandor.html
-        //為了呈現真實感，餐點圖片與商品描述都取自麥當勞官網：https://www.mcdonalds.com/tw/zh-tw/full-menu/extra-value-meals.html
-        //抓取網路圖片上傳時
+        //餐點圖片與商品描述都取自麥當勞官網：https://www.mcdonalds.com/tw/zh-tw/full-menu/extra-value-meals.html
         SqlConnectionStringBuilder scsb = new SqlConnectionStringBuilder();
         List<string> list商品名稱 = new List<string>();
         List<int> list商品價格 = new List<int>();
         List<int> listId = new List<int>();
+
+        
         string strSQL = "";
 
         public Form1()
@@ -32,10 +33,8 @@ namespace 模擬麥當勞訂餐
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // 捕捉所有例外狀況
             try
             {
-                // 可能會拋出例外狀況的程式碼
                 Console.WriteLine("Form Load !!");
 
                 Login myFormLogin = new Login();
@@ -43,8 +42,7 @@ namespace 模擬麥當勞訂餐
 
                 if (GlobalVar.使用者權限 >= 1000)
                 {
-                    btn新增商品.Visible = false;
-                    btn訂單管理.Visible = false;
+                    gbox員工專區.Visible = false;
                 }
 
                 scsb.DataSource = @".";
@@ -58,17 +56,35 @@ namespace 模擬麥當勞訂餐
                     $"儲值金:  {GlobalVar.儲值金}\n" +
                     $"點點卡點數:  {GlobalVar.點點卡點數}";
 
-                strSQL = "select top 200 * from products where [type] = 1;";
+                strSQL = "select * from products where [type] = 1;";
                 讀取商品資料庫(strSQL);
                 顯示listView_圖片模式();
+                讀取購物車訂購筆數();
             }
             catch (Exception ex)
             {
                 // 顯示錯誤訊息和錯誤圖示
                 MessageBox.Show(ex.Message, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            } 
+            }
         }
+        void 讀取購物車訂購筆數()
+        {
+            SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);
+            con.Open();
+            string strSQL = "select count(\"id\") as 訂購筆數 from carts where user_id = @UserId";
+            SqlCommand cmd = new SqlCommand(strSQL, con);
+            cmd.Parameters.AddWithValue("@UserId", GlobalVar.使用者id);
+            SqlDataReader reader = cmd.ExecuteReader();
 
+            if (reader.Read())
+            {
+                GlobalVar.購物車訂購筆數 = (int)reader["訂購筆數"];
+            }
+            reader.Close();
+            con.Close();
+            Console.WriteLine($"購物車訂購筆數：{GlobalVar.購物車訂購筆數}");
+            btn查看購物車.Text = $"查看購物車({GlobalVar.購物車訂購筆數})";
+        }
         void 讀取商品資料庫(string strSQL)
         {
             SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);
@@ -197,6 +213,7 @@ namespace 模擬麥當勞訂餐
                 // 可能會拋出例外狀況的程式碼
                 Console.WriteLine("Form Activated !!");
                 重新載入資料();
+                讀取購物車訂購筆數();
             }
             catch (Exception ex)
             {
@@ -411,17 +428,82 @@ namespace 模擬麥當勞訂餐
 
         }
 
-        private void btnOrderManage_Click(object sender, EventArgs e)
+        private void btn查看購物車_Click(object sender, EventArgs e)
+        {
+            // 捕捉所有例外狀況
+            try
+            {
+                // 可能會拋出例外狀況的程式碼
+                // 捕捉所有例外狀況
+                FormOrderList myFormOrderList = new FormOrderList();
+                myFormOrderList.ShowDialog();
+
+            }
+            catch (Exception ex)
+            {
+                // 顯示錯誤訊息和錯誤圖示
+                MessageBox.Show(ex.Message, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btn超值全餐飲料_Click(object sender, EventArgs e)
+        {
+            // 捕捉所有例外狀況
+            try
+            {
+                // 可能會拋出例外狀況的程式碼
+                listId.Clear();
+                list商品名稱.Clear();
+                list商品價格.Clear();
+                imageList商品圖檔.Images.Clear();
+                strSQL = "select top 200 * from products where [type] = 7;";
+                讀取商品資料庫(strSQL);
+                顯示listView_圖片模式();
+            }
+            catch (Exception ex)
+            {
+                // 顯示錯誤訊息和錯誤圖示
+                MessageBox.Show(ex.Message, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cbox用餐方式_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
         {
 
         }
 
-        private void btn查看購物車_Click(object sender, EventArgs e)
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn修改會員資料_Click(object sender, EventArgs e)
+        {
+            修改會員 my修改會員Form = new 修改會員();
+            my修改會員Form.ShowDialog();
+        }
+
+        private void gbox員工專區_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn會員管理_Click(object sender, EventArgs e)
         {
 
         }
 
         private void btn訂單管理_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn我的訂單_Click(object sender, EventArgs e)
         {
 
         }

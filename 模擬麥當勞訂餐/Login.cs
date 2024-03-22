@@ -40,16 +40,16 @@ namespace 模擬麥當勞訂餐
 
         private void btn登入_Click(object sender, EventArgs e)
         {
-            // 捕捉所有例外狀況
             try
             {
                 if ((txt使用者名稱.Text != "") && (txt密碼.Text != ""))
                 {
                     SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);
                     con.Open();
-                    string strSQL = "select [mId],[mName],[password],[permission],[points],[cash] from members where mName = @SearchName and password = @SearchPassword;";
+                    string strSQL = "select [mId],[mName],[email],[password],[permission],[points],[cash] from members where (email = @SearchEmailOrName or mName = @SearchEmailOrName) and password = @SearchPassword;";
                     SqlCommand cmd = new SqlCommand(strSQL, con);
-                    cmd.Parameters.AddWithValue("@SearchName", txt使用者名稱.Text);
+                    //使用者名稱或信箱登入
+                    cmd.Parameters.AddWithValue("@SearchEmailOrName", txt使用者名稱.Text);
                     cmd.Parameters.AddWithValue("@SearchPassword", txt密碼.Text);
                     SqlDataReader reader = cmd.ExecuteReader();
 
@@ -69,7 +69,7 @@ namespace 模擬麥當勞訂餐
 
                     if (GlobalVar.is登入成功 == false)
                     {
-                        lbl回應訊息.Text = "登入資料有誤, 登入失敗";
+                        MessageBox.Show("登入資料有誤, 登入失敗");
                     }
                     reader.Close();
                     con.Close();
@@ -111,6 +111,21 @@ namespace 模擬麥當勞訂餐
         {
             Register myFormRegister = new Register();
             myFormRegister.ShowDialog();
+        }
+
+        private void txt密碼_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn忘記密碼_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn忘記使用者名稱_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

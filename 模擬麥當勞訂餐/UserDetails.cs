@@ -5,11 +5,13 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace 模擬麥當勞訂餐
 {
@@ -17,7 +19,8 @@ namespace 模擬麥當勞訂餐
     {
         public int loadId = 0;
         string str修改後的圖檔名稱 = "";
-        public int 數量 = 1;
+        int 數量 = 1;
+        int 商品種類Id = 0;
 
         public UserDetails()
         {
@@ -26,29 +29,18 @@ namespace 模擬麥當勞訂餐
 
         private void btn加入購物車_Click(object sender, EventArgs e)
         {
-            // 捕捉所有例外狀況
+            // 若配餐跟飲料的數量小於A區主餐數量，系統會提示使用者重新選餐
             try
             {
-                // 加入購物車資料庫
-                if ((loadId != 0) && (GlobalVar.使用者id != 0) && (txt數量.Text != ""))
+                if (GlobalVar.購物車訂購筆數 >= 200)
                 {
-                    SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);
-                    con.Open();
-                    string strSQL = "insert into carts values(@NewUserId, @NewProductId, @NewAmount);";
-                    SqlCommand cmd = new SqlCommand(strSQL, con);
-                    cmd.Parameters.AddWithValue("@NewProductId", loadId);
-                    cmd.Parameters.AddWithValue("@NewUserId", GlobalVar.使用者id);
-                    Int32.TryParse(txt數量.Text, out 數量);
-                    cmd.Parameters.AddWithValue("@NewAmount", 數量);
-                    //cmd.Parameters.AddWithValue("@NewType", );
-
-                    int rows = cmd.ExecuteNonQuery();
-                    con.Close();
-                    MessageBox.Show("已加入購物車 !!");
+                    MessageBox.Show("已達單筆訂購上限");
+                    this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("所有欄位必填 !!");
+                    加入購物車();
+                    this.Close();
                 }
             }
             catch (Exception ex)
@@ -57,28 +49,45 @@ namespace 模擬麥當勞訂餐
                 MessageBox.Show(ex.Message, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        void 驗證A()
+        void 加入購物車()
         {
+            if ((loadId != 0) && (GlobalVar.使用者id != 0) && (txt數量.Text != ""))
+            {
+                SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);
+                con.Open();
+                string strSQL = "insert into carts values(@NewUserId, @NewProductId, @NewAmount);";
+                SqlCommand cmd = new SqlCommand(strSQL, con);
+                cmd.Parameters.AddWithValue("@NewUserId", GlobalVar.使用者id);
+                cmd.Parameters.AddWithValue("@NewProductId", loadId);
+                Int32.TryParse(txt數量.Text, out 數量);
+                cmd.Parameters.AddWithValue("@NewAmount", 數量);
+                //cmd.Parameters.AddWithValue("@NewType", );
 
+                int rows = cmd.ExecuteNonQuery();
+                con.Close();
+                Console.WriteLine($"{rows}個資料受到影響");
+                MessageBox.Show($"你選了{txt數量.Text}個{lbl商品名稱.Text}，已將商品加入購物車 !!");
+            }
+            else
+            {
+                MessageBox.Show("資料格式不正確 !!");
+            }
         }
-
+        
         private void btn查看購物車_Click(object sender, EventArgs e)
         {
             // 捕捉所有例外狀況
             try
             {
-                // 可能會拋出例外狀況的程式碼
+                FormOrderList myFormOrderList = new FormOrderList();
+                myFormOrderList.ShowDialog();
+
             }
             catch (Exception ex)
             {
                 // 顯示錯誤訊息和錯誤圖示
                 MessageBox.Show(ex.Message, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void btn離開_Click(object sender, EventArgs e)
-        {
-            Close();
         }
 
         private void btn_plus_Click(object sender, EventArgs e)
@@ -137,15 +146,18 @@ namespace 模擬麥當勞訂餐
                 SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);
                 con.Open();
                 string strSQL =
-                    "select [pdesc],[pimage] from products where id = @SearchId;";
+                    "select [pname],[pdesc],[pimage],[type] from products where id = @SearchId;";
                 SqlCommand cmd = new SqlCommand(strSQL, con);
                 cmd.Parameters.AddWithValue("@SearchId", loadId);
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 if (reader.Read())
                 {
+                    lbl商品名稱.Text = reader["pname"].ToString();
                     lbl商品說明.Text = reader["pdesc"].ToString();
                     str修改後的圖檔名稱 = reader["pimage"].ToString();
+                    商品種類Id = (int)reader["type"];
+                    Console.WriteLine($"已選商品種類Id {商品種類Id}");
                     string str完整圖檔路徑 = GlobalVar.image_dir + @"\" + str修改後的圖檔名稱;
                     //pictureBox商品圖片.Image = Image.FromFile(str完整圖檔路徑);
                     System.IO.FileStream fs = System.IO.File.OpenRead(str完整圖檔路徑);
@@ -191,6 +203,11 @@ namespace 模擬麥當勞訂餐
         private void lbl商品說明_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn離開_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

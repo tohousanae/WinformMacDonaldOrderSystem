@@ -18,8 +18,10 @@ namespace 模擬麥當勞訂餐
         public int loadId = 0;
         string str修改後的圖檔名稱 = "";
         bool is修改圖檔 = false;
+        List<int> list商品種類Id = new List<int>();
+        List<string> list商品種類 = new List<string>();
 
-    public FormDetail()
+        public FormDetail()
         {
             InitializeComponent();
         }
@@ -128,8 +130,8 @@ namespace 模擬麥當勞訂餐
         }
         void 顯示商品類別()
         {
-            GlobalVar.list商品種類Id.Clear();
-            GlobalVar.list商品種類.Clear();
+            list商品種類Id.Clear();
+            list商品種類.Clear();
             SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);
             con.Open();
             string strSQL =
@@ -141,18 +143,16 @@ namespace 模擬麥當勞訂餐
 
             while (reader.Read())
             {
-                GlobalVar.list商品種類Id.Add((int)reader["id"]);
-                GlobalVar.list商品種類.Add((string)reader["typeName"]);
+                list商品種類Id.Add((int)reader["id"]);
+                list商品種類.Add((string)reader["typeName"]);
                 count++;
             }
-            foreach (string item in GlobalVar.list商品種類)
+            foreach (string item in list商品種類)
             {
                 cbox商品種類.Items.Add(item);
-                Console.WriteLine($"全部的商品類別有類別有{item}");
             }
             reader.Close();
             con.Close();
-            Console.WriteLine($"讀取{count}筆類別");
         }
         void 選取商品圖片()
         {
@@ -198,7 +198,6 @@ namespace 模擬麥當勞訂餐
                 MessageBox.Show(ex.Message, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btn儲存新增_Click(object sender, EventArgs e)
         {
             // 捕捉所有例外狀況
@@ -217,8 +216,7 @@ namespace 模擬麥當勞訂餐
                     cmd.Parameters.AddWithValue("@NewPrice", intPrice);
                     cmd.Parameters.AddWithValue("@NewDesc", txt商品描述.Text);
                     cmd.Parameters.AddWithValue("@NewImage", str修改後的圖檔名稱);
-                    cmd.Parameters.AddWithValue("@NewType", cbox商品種類.SelectedIndex + GlobalVar.list商品種類Id[0]);
-                    Console.WriteLine(cbox商品種類.SelectedIndex + GlobalVar.list商品種類Id[0]);
+                    cmd.Parameters.AddWithValue("@NewType", list商品種類Id[cbox商品種類.SelectedIndex]);
 
                     int rows = cmd.ExecuteNonQuery();
                     con.Close();
@@ -296,7 +294,7 @@ namespace 模擬麥當勞訂餐
                     cmd.Parameters.AddWithValue("@NewPrice", intPrice);
                     cmd.Parameters.AddWithValue("@NewDesc", txt商品描述.Text);
                     cmd.Parameters.AddWithValue("@NewImage", str修改後的圖檔名稱);
-                    cmd.Parameters.AddWithValue("@NewType", cbox商品種類.SelectedIndex + GlobalVar.list商品種類Id[0]);
+                    cmd.Parameters.AddWithValue("@NewType", list商品種類Id[cbox商品種類.SelectedIndex]);
                     int rows = cmd.ExecuteNonQuery();
                     con.Close();
 
