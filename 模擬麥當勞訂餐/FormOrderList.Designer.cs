@@ -115,7 +115,7 @@
             this.lbl訂單總價.Location = new System.Drawing.Point(488, 613);
             this.lbl訂單總價.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl訂單總價.Name = "lbl訂單總價";
-            this.lbl訂單總價.Size = new System.Drawing.Size(311, 54);
+            this.lbl訂單總價.Size = new System.Drawing.Size(256, 54);
             this.lbl訂單總價.TabIndex = 15;
             this.lbl訂單總價.Text = "訂單總價 0 元";
             this.lbl訂單總價.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

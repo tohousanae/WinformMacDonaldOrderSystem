@@ -503,7 +503,7 @@ namespace 模擬麥當勞訂餐
         }
         void 輸出明細表()
         {
-            string str輸出檔案目錄 = @"C:\Users\iSpan\Documents\DotNet元件開發";
+            string str輸出檔案目錄 = @".";
             Random myRnd = new Random();
             int rndNum = myRnd.Next(1000, 10000);
             string str檔名 = DateTime.Now.ToString("yyMMddHHmmss") + rndNum + "明細表.txt";
