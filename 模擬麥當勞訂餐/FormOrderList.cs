@@ -35,6 +35,7 @@ namespace 模擬麥當勞訂餐
         int 分店Id = 0;
         int 付款方式Id = 0;
         int 外送費 = 0;
+        string 明細表檔名 = "";
 
         public FormOrderList()
         {
@@ -477,8 +478,8 @@ namespace 模擬麥當勞訂餐
             }
             else
             {
-                送出訂單();
                 輸出明細表();
+                送出訂單();
                 MessageBox.Show("訂單已送出，謝謝光臨");
             }
         }
@@ -486,7 +487,6 @@ namespace 模擬麥當勞訂餐
         {
             Random myRnd = new Random();
             int rndNum = myRnd.Next(1000, 10000);
-            string str檔名 = DateTime.Now.ToString("yyMMddHHmmss") + rndNum + "明細表.txt";
             SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);
             string strSQL = "insert into OrderForm values (@NewUserId,@NewTime,@NewStatus,@NewDetail);";
             con.Open();
@@ -494,7 +494,7 @@ namespace 模擬麥當勞訂餐
             cmd.Parameters.AddWithValue("@NewUserId", GlobalVar.使用者id);
             cmd.Parameters.AddWithValue("@NewTime", DateTime.Now);
             cmd.Parameters.AddWithValue("@NewStatus", "未排單");
-            cmd.Parameters.AddWithValue("@NewDetail", str檔名);
+            cmd.Parameters.AddWithValue("@NewDetail", 明細表檔名);
 
             int rows = cmd.ExecuteNonQuery();
             con.Close();
@@ -505,15 +505,15 @@ namespace 模擬麥當勞訂餐
         {
             string str輸出檔案目錄 = @".";
             Random myRnd = new Random();
-            int rndNum = myRnd.Next(1000, 10000);
-            string str檔名 = DateTime.Now.ToString("yyMMddHHmmss") + rndNum + "明細表.txt";
-            string str完整檔案路徑 = str輸出檔案目錄 + @"\" + str檔名;
+            int rndNum = myRnd.Next(1000, 100000000);
+            明細表檔名 = DateTime.Now.ToString("yyMMddHHmmss") +" "+$"YM-{rndNum}" + "交易明細.txt";
+            string str完整檔案路徑 = str輸出檔案目錄 + @"\" + 明細表檔名;
 
             Console.WriteLine(str完整檔案路徑);
 
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.InitialDirectory = str輸出檔案目錄;
-            sfd.FileName = str檔名;
+            sfd.FileName = 明細表檔名;
             sfd.Filter = "文字檔 Text File|*.txt";
 
             DialogResult R = sfd.ShowDialog();
@@ -530,11 +530,9 @@ namespace 模擬麥當勞訂餐
             //訂單內容輸出
             List<string> list訂單資訊 = new List<string>
             {
-                "********** 麥當勞明細 **********",
-                "---------------------------------",
-                $"訂購時間: {DateTime.Now}",
-                $"訂購人: {GlobalVar.使用者名稱}",
-                "========= << 訂購品項 >> =========="
+                "            McDonald's           ",
+                "                                 ",
+                "             交易明細            (銷售)"
             };
 
             //從購物車資料庫取得資料來做成收據
