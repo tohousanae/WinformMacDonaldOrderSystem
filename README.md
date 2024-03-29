@@ -7,7 +7,7 @@
 帳號： example@example.com
 密碼： example
 ```
-使用者端功能：
+客人端功能：
 - [x] 會員登入
 - [x] 會員註冊
 - [x] 修改會員資料
