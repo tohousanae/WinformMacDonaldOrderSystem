@@ -12,19 +12,19 @@
 
 商家端功能：
 ```bash
-權限： 100~1000
-職位： 店員
-可執行操作： 修改商品
+- 權限： 100~1000
+- 職位： 店員
+- 可執行操作： 修改商品
 ```
 ```bash
-權限： 10~100
-職位： 店長
-可執行操作： 新增商品、修改商品、刪除商品
+- 權限： 10~100
+- 職位： 店長
+- 可執行操作： 新增商品、修改商品、刪除商品
 ```
 ```bash
-權限： 1~10
-職位： 系統管理員
-可執行操作： 新增商品、修改商品、刪除商品
+- 權限： 1~10
+- 職位： 系統管理員
+- 可執行操作： 新增商品、修改商品、刪除商品
 ```
 
 ## 畫面
@@ -64,9 +64,15 @@
 商家操作，這裡以店長登入示範商品的新增、修改、刪除操作：
 1. 店長登入<br>
 ![image](https://github.com/tohousanae/WinformMacDonaldOrderSystem/assets/122202405/9540af7c-d9b3-445f-a172-a26054846ccf)
-2. 新增商品<br>
-3. 修改商品<br>
-4. 刪除商品<br>
+2. 新增商品，新增後的商品如以下顯示<br>
+![image](https://github.com/tohousanae/WinformMacDonaldOrderSystem/assets/122202405/d2dc6901-ed90-4fac-9f9c-b451ff2c6e72)
+![image](https://github.com/tohousanae/WinformMacDonaldOrderSystem/assets/122202405/9fd455d5-3b04-4eb8-8177-ab27c9ae0431)
+4. 修改商品，點選商品圖片即可進入商品管理頁面修改商品<br>
+![image](https://github.com/tohousanae/WinformMacDonaldOrderSystem/assets/122202405/7a991705-467f-419c-bc3a-b115b2fc323a)
+![image](https://github.com/tohousanae/WinformMacDonaldOrderSystem/assets/122202405/835d0d0d-1fbd-4a56-ad90-18746336ea4d)
+5. 刪除商品，點選商品圖片即可進入商品管理頁面刪除商品，刪除前有確認視窗<br>
+![image](https://github.com/tohousanae/WinformMacDonaldOrderSystem/assets/122202405/ee22a0f5-3f69-4b60-ab94-681538f6a9fa)
+![image](https://github.com/tohousanae/WinformMacDonaldOrderSystem/assets/122202405/52b67dea-d62f-49b6-9597-262ebba25e1a)
 
 ## 引用資料
 商品圖片、商品資訊文字取自麥當勞官網：https://www.mcdonalds.com/tw/zh-tw.html
