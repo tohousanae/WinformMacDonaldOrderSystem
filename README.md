@@ -58,7 +58,7 @@
 ![image](https://github.com/tohousanae/WinformMacDonaldOrderSystem/assets/122202405/67480f82-2242-449b-b217-8a22508681f4)
 10. 修改會員資料：與註冊會員相同，信箱與電話號碼皆不可重複註冊，密碼與再次輸入密碼需一致<br>
 ![image](https://github.com/tohousanae/WinformMacDonaldOrderSystem/assets/122202405/27caa5aa-9b3e-410b-b90c-f2beb0ae29fc)
-![image](https://github.com/tohousanae/WinformMacDonaldOrderSystem/assets/122202405/a0a1e7c0-f6b1-4a46-96ca-d3cc099d6125)
+![image](https://github.com/tohousanae/WinformMacDonaldOrderSystem/assets/122202405/0a7208c3-17c8-44b8-a1cd-82feef2850f0)
 
 商家操作，這裡以店長權限做示範：
 1. 會員登入/註冊畫面<br>
