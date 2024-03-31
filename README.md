@@ -64,7 +64,8 @@
 商家操作，這裡以店長登入示範商品的新增、修改、刪除操作：
 1. 店長登入<br>
 ![image](https://github.com/tohousanae/WinformMacDonaldOrderSystem/assets/122202405/9540af7c-d9b3-445f-a172-a26054846ccf)
-2. 新增商品，新增後的商品如以下顯示<br>
+2. 新增商品，點選員工專區的"新增商品"進行新增商品操作<br>
+![image](https://github.com/tohousanae/WinformMacDonaldOrderSystem/assets/122202405/60b021f1-2b79-46b6-bcc5-b60214bb05e2)
 ![image](https://github.com/tohousanae/WinformMacDonaldOrderSystem/assets/122202405/d2dc6901-ed90-4fac-9f9c-b451ff2c6e72)
 ![image](https://github.com/tohousanae/WinformMacDonaldOrderSystem/assets/122202405/9fd455d5-3b04-4eb8-8177-ab27c9ae0431)
 4. 修改商品，點選商品圖片即可進入商品管理頁面修改商品<br>
