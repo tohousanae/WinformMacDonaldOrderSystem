@@ -51,7 +51,7 @@
 10. 查看購物車，當配餐與超值全餐飲料數量比主餐多時，不可送出訂單，主餐可以單點<br>
 ![image](https://github.com/tohousanae/WinformMacDonaldOrderSystem/assets/122202405/095dd1ef-d08a-44f8-b640-a9a20e6b5e0a)
 ![image](https://github.com/tohousanae/WinformMacDonaldOrderSystem/assets/122202405/84815e4c-74b0-430e-921f-8b7f854f3d87)
-11. 輸出明細表並送出訂單<br>
+11. 輸出明細表並送出訂單<br><br>
 明細表：<br>
 ![image](https://github.com/tohousanae/WinformMacDonaldOrderSystem/assets/122202405/9516d380-8d72-4c23-8190-6889c439846f)
 <br>送出訂單：
