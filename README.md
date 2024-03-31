@@ -35,5 +35,8 @@
 ![image](https://github.com/tohousanae/WinformMacDonaldOrderSystem/assets/122202405/530657d4-78f5-479e-a4e5-074018f5cd5a)
 4. 使用者註冊成功，預設權限為1000，為客人權限
 ![image](https://github.com/tohousanae/WinformMacDonaldOrderSystem/assets/122202405/acce1d32-84f7-4eb1-85b6-d93ddd686e96)
+5. 使用者登入
+![image](https://github.com/tohousanae/WinformMacDonaldOrderSystem/assets/122202405/3483ea02-1cf5-44d6-9787-289b81d2d9da)
+
 
 
