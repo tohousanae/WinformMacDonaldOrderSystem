@@ -1,7 +1,7 @@
 # 模擬麥當勞訂餐
 ## 功能
 
-測試用使用者名稱/Email與密碼
+測試用客人登入名稱/Email與密碼
 
 ```bash
 帳號： example@example.com
@@ -16,7 +16,12 @@
 
 商家端功能：
 - [x] 權限說明：
-- [x] 
+```bash
+權限： 店員
+職位： 
+帳號： example@example.com
+密碼： example
+```
 - [x] 新增商品
 - [x] 修改商品
 - [x] 刪除商品
