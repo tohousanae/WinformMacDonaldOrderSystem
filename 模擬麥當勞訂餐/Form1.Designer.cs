@@ -62,10 +62,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btn超值全餐飲料 = new System.Windows.Forms.Button();
             this.btn查看購物車 = new System.Windows.Forms.Button();
-            this.btn我的訂單 = new System.Windows.Forms.Button();
-            this.btn訂單管理 = new System.Windows.Forms.Button();
             this.gbox員工專區 = new System.Windows.Forms.GroupBox();
-            this.btn會員管理 = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.gbox員工專區.SuspendLayout();
@@ -467,36 +464,9 @@
             this.btn查看購物車.UseVisualStyleBackColor = true;
             this.btn查看購物車.Click += new System.EventHandler(this.btn查看購物車_Click);
             // 
-            // btn我的訂單
-            // 
-            this.btn我的訂單.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn我的訂單.Location = new System.Drawing.Point(262, 611);
-            this.btn我的訂單.Margin = new System.Windows.Forms.Padding(2);
-            this.btn我的訂單.Name = "btn我的訂單";
-            this.btn我的訂單.Size = new System.Drawing.Size(159, 51);
-            this.btn我的訂單.TabIndex = 52;
-            this.btn我的訂單.Text = "我的訂單";
-            this.btn我的訂單.UseVisualStyleBackColor = true;
-            this.btn我的訂單.Click += new System.EventHandler(this.btn我的訂單_Click);
-            // 
-            // btn訂單管理
-            // 
-            this.btn訂單管理.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btn訂單管理.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn訂單管理.Location = new System.Drawing.Point(182, 56);
-            this.btn訂單管理.Margin = new System.Windows.Forms.Padding(2);
-            this.btn訂單管理.Name = "btn訂單管理";
-            this.btn訂單管理.Size = new System.Drawing.Size(122, 45);
-            this.btn訂單管理.TabIndex = 53;
-            this.btn訂單管理.Text = "訂單管理";
-            this.btn訂單管理.UseVisualStyleBackColor = false;
-            this.btn訂單管理.Click += new System.EventHandler(this.btn訂單管理_Click);
-            // 
             // gbox員工專區
             // 
             this.gbox員工專區.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.gbox員工專區.Controls.Add(this.btn會員管理);
-            this.gbox員工專區.Controls.Add(this.btn訂單管理);
             this.gbox員工專區.Controls.Add(this.btn新增商品);
             this.gbox員工專區.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.gbox員工專區.Location = new System.Drawing.Point(1029, 387);
@@ -507,19 +477,6 @@
             this.gbox員工專區.Text = "員工專區";
             this.gbox員工專區.Enter += new System.EventHandler(this.gbox員工專區_Enter);
             // 
-            // btn會員管理
-            // 
-            this.btn會員管理.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btn會員管理.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn會員管理.Location = new System.Drawing.Point(41, 117);
-            this.btn會員管理.Margin = new System.Windows.Forms.Padding(2);
-            this.btn會員管理.Name = "btn會員管理";
-            this.btn會員管理.Size = new System.Drawing.Size(123, 44);
-            this.btn會員管理.TabIndex = 54;
-            this.btn會員管理.Text = "會員管理";
-            this.btn會員管理.UseVisualStyleBackColor = false;
-            this.btn會員管理.Click += new System.EventHandler(this.btn會員管理_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -527,7 +484,6 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(1388, 680);
             this.Controls.Add(this.gbox員工專區);
-            this.Controls.Add(this.btn我的訂單);
             this.Controls.Add(this.btn查看購物車);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
@@ -583,12 +539,9 @@
         private System.Windows.Forms.Button btn超值B;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btn查看購物車;
-        private System.Windows.Forms.Button btn我的訂單;
-        private System.Windows.Forms.Button btn訂單管理;
         private System.Windows.Forms.Button btn超值全餐飲料;
         private System.Windows.Forms.Button btn修改會員資料;
         private System.Windows.Forms.GroupBox gbox員工專區;
-        private System.Windows.Forms.Button btn會員管理;
     }
 }
 
