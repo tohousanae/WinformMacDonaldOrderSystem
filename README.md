@@ -37,6 +37,17 @@
 ![image](https://github.com/tohousanae/WinformMacDonaldOrderSystem/assets/122202405/acce1d32-84f7-4eb1-85b6-d93ddd686e96)
 5. 使用者登入
 ![image](https://github.com/tohousanae/WinformMacDonaldOrderSystem/assets/122202405/3483ea02-1cf5-44d6-9787-289b81d2d9da)
+6. 點餐畫面，上方餐點種類選單按鈕可切換餐點，左下角查看購物車按鈕會計算購物車當中的品項數量
+![image](https://github.com/tohousanae/WinformMacDonaldOrderSystem/assets/122202405/cfb8da1f-d8ad-496a-9587-19a842b377f6)
+![image](https://github.com/tohousanae/WinformMacDonaldOrderSystem/assets/122202405/47bc77d1-1de1-4bd7-8ed6-466a5bf4da42)
+![image](https://github.com/tohousanae/WinformMacDonaldOrderSystem/assets/122202405/61ab6a33-b0b8-4378-8b90-71d1738f1c54)
+![image](https://github.com/tohousanae/WinformMacDonaldOrderSystem/assets/122202405/74437a61-42cc-44d1-80c0-651e80ae7bf7)
+![image](https://github.com/tohousanae/WinformMacDonaldOrderSystem/assets/122202405/25839bc7-220a-4994-937b-4f707258e0e8)
+7. 查看購物車，當配餐與超值全餐飲料數量比主餐多時，不可送出訂單，主餐可以單點
+![image](https://github.com/tohousanae/WinformMacDonaldOrderSystem/assets/122202405/095dd1ef-d08a-44f8-b640-a9a20e6b5e0a)
+![image](https://github.com/tohousanae/WinformMacDonaldOrderSystem/assets/122202405/84815e4c-74b0-430e-921f-8b7f854f3d87)
+8. 
+
 
 
 
