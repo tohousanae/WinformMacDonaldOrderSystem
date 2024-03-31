@@ -24,7 +24,16 @@
 
 ## 畫面
 
-![範例圖片 1](https://fakeimg.pl/500/)
-![範例圖片 2](https://fakeimg.pl/500/)
-![範例圖片 3](https://fakeimg.pl/500/)
+客人端操作：
+<br>
+1. 會員登入/註冊畫面
+![image](https://github.com/tohousanae/WinformMacDonaldOrderSystem/assets/122202405/ccfe8f64-2b87-4f31-93c2-bc91bc4b2748)
+2. 會員註冊
+![image](https://github.com/tohousanae/WinformMacDonaldOrderSystem/assets/122202405/84d2bdf4-f70d-402e-97d1-201c48f9f540)
+3. 信箱與電話號碼不可重複註冊
+![image](https://github.com/tohousanae/WinformMacDonaldOrderSystem/assets/122202405/c242425d-4fd6-4a00-85ee-9369f78fd8c3)
+![image](https://github.com/tohousanae/WinformMacDonaldOrderSystem/assets/122202405/530657d4-78f5-479e-a4e5-074018f5cd5a)
+4. 使用者註冊成功，預設權限為1000，為客人權限
+![image](https://github.com/tohousanae/WinformMacDonaldOrderSystem/assets/122202405/acce1d32-84f7-4eb1-85b6-d93ddd686e96)
+
 
