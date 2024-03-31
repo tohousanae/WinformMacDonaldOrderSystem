@@ -1,7 +1,7 @@
 # 模擬麥當勞訂餐
 ## 功能
 
-測試帳號密碼
+測試用使用者名稱/Email與密碼
 
 ```bash
 帳號： example@example.com
