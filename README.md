@@ -23,12 +23,12 @@
 ```bash
 權限： 1~10
 職位： 系統管理員
-可執行操作： 新增商品、刪除商品
+可執行操作： 新增商品、修改商品、刪除商品
 ```
 
 ## 畫面
 
-客人端操作：
+客人操作：
 1. 會員登入/註冊畫面<br>
 ![image](https://github.com/tohousanae/WinformMacDonaldOrderSystem/assets/122202405/ccfe8f64-2b87-4f31-93c2-bc91bc4b2748)
 2. 會員註冊<br>
@@ -60,11 +60,16 @@
 ![image](https://github.com/tohousanae/WinformMacDonaldOrderSystem/assets/122202405/27caa5aa-9b3e-410b-b90c-f2beb0ae29fc)
 ![image](https://github.com/tohousanae/WinformMacDonaldOrderSystem/assets/122202405/0a7208c3-17c8-44b8-a1cd-82feef2850f0)
 
-商家操作，這裡以店長權限做示範：
-1. 會員登入/註冊畫面<br>
-![image](https://github.com/tohousanae/WinformMacDonaldOrderSystem/assets/122202405/ccfe8f64-2b87-4f31-93c2-bc91bc4b2748)
-2. 
+商家操作，這裡以店長登入示範商品的新增、修改、刪除操作：
+1. 店長登入<br>
+![image](https://github.com/tohousanae/WinformMacDonaldOrderSystem/assets/122202405/9540af7c-d9b3-445f-a172-a26054846ccf)
+2. 新增商品<br>
+3. 修改商品<br>
+4. 刪除商品<br>
 
+## 引用資料
+商品圖片、商品資訊文字取自麥當勞官網：https://www.mcdonalds.com/tw/zh-tw.html
 
-
+## 注意事項
+本專案為程式學習交流使用，請勿商用
 
