@@ -40,6 +40,10 @@ namespace 模擬麥當勞訂餐
                 Login myFormLogin = new Login();
                 myFormLogin.ShowDialog();
 
+                if (GlobalVar.使用者id == 0)
+                {
+                    Application.Exit();
+                }
                 if (GlobalVar.使用者權限 >= 1000)
                 {
                     gbox員工專區.Visible = false;

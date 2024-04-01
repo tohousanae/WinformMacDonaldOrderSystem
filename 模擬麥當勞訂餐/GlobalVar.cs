@@ -10,7 +10,7 @@ namespace 模擬麥當勞訂餐
 {
     internal class GlobalVar
     {
-        public static string image_dir = @".\image";
+        public static string image_dir = @"..\..\..\images";
         public static string strDBConnectionString = "";
         public static bool is登入成功 = false;
         public static string 使用者名稱 = "";
