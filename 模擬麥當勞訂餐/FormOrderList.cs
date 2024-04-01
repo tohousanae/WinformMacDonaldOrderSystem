@@ -506,7 +506,7 @@ namespace 模擬麥當勞訂餐
             string str輸出檔案目錄 = @".";
             Random myRnd = new Random();
             int rndNum = myRnd.Next(1000, 100000000);
-            明細表檔名 = DateTime.Now.ToString("yyMMddHHmmss") +" "+$"YM-{rndNum}" + "交易明細.txt";
+            明細表檔名 = DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss") +" "+$"YM-{rndNum}" + "交易明細.txt";
             string str完整檔案路徑 = str輸出檔案目錄 + @"\" + 明細表檔名;
 
             Console.WriteLine(str完整檔案路徑);
@@ -530,27 +530,32 @@ namespace 模擬麥當勞訂餐
             //訂單內容輸出
             List<string> list訂單資訊 = new List<string>
             {
+                "===================================",
                 "            McDonald's           ",
                 "                                 ",
-                "             交易明細            (銷售)"
+                "             交易明細      (銷售)",
+                "==================================="
             };
+            list訂單資訊.Add($"明細編號：YM-{rndNum}");
+            list訂單資訊.Add($"餐廳名稱：{cbox分店.Text}");
+            list訂單資訊.Add($"訂單時間：{DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss")}");
+
             //從購物車資料庫取得資料來做成收據
             SqlConnection con = new SqlConnection(GlobalVar.strDBConnectionString);
             con.Open();
-            string strSQL = "SELECT top 200 type.typeName as 商品類別,products.pname as 商品名稱,products.price as 單價,carts.amount as 數量,products.price * carts.amount as 項目總價 FROM (carts INNER JOIN products ON carts.product_id = products.id) INNER JOIN type ON products.type = type.id WHERE carts.user_id = @UserId order by 商品名稱;";
+            string strSQL = "SELECT top 200 products.pname as 商品名稱,products.price as 單價,carts.amount as 數量,products.price * carts.amount as 項目總價 FROM (carts INNER JOIN products ON carts.product_id = products.id) INNER JOIN type ON products.type = type.id WHERE carts.user_id = @UserId order by 商品名稱;";
             SqlCommand cmd = new SqlCommand(strSQL, con);
             cmd.Parameters.AddWithValue("@UserId", GlobalVar.使用者id);
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
             {
-                list訂單資訊.Add($"YM-{rndNum}");
-                string 商品類別 = (string)reader["商品類別"];
+                list訂單資訊.Add("-----------------------------------");
                 string 商品名稱 = (string)reader["商品名稱"];
                 int 單價 = (int)reader["單價"];
                 int 數量 = (int)reader["數量"];
                 int 項目總價 = (int)reader["項目總價"];
-                string strInfo = string.Format($"商品類別：{商品類別}\n商品名稱：{商品名稱}\n{單價}\n{數量}\n{項目總價}");
+                string strInfo = string.Format($"商品名稱：{商品名稱}\n單價：{單價}元\n數量：{數量}\n項目總價：{項目總價}元");
 
                 list訂單資訊.Add(strInfo);
                 GlobalVar.購物車訂購筆數++;
@@ -559,17 +564,15 @@ namespace 模擬麥當勞訂餐
             con.Close();
             Console.WriteLine($"讀取{GlobalVar.購物車訂購筆數}筆資料");
 
-            list訂單資訊.Add("===================================");
+            list訂單資訊.Add($"===================================");
             list訂單資訊.Add($" 用餐方式：{cbox用餐方式.Text}");
             list訂單資訊.Add($" 外送地址：{txt外送地址.Text}");
             list訂單資訊.Add($" 連絡電話：{txt連絡電話.Text}");
-            list訂單資訊.Add($" 分店：{cbox分店.Text}");
             list訂單資訊.Add($" 付款方式：{cbox付款方式.Text}");
             list訂單資訊.Add($" 統一編號：{txt統編.Text}");
             list訂單資訊.Add("-----------------------------------");
             list訂單資訊.Add($" {lbl訂單總價.Text} ");
             list訂單資訊.Add("===================================");
-            list訂單資訊.Add("************* 謝謝光臨 *************");
 
             System.IO.File.WriteAllLines(str完整檔案路徑, list訂單資訊, Encoding.UTF8);
 

@@ -61,7 +61,22 @@ namespace 模擬麥當勞訂餐
                         GlobalVar.使用者權限 = (int)reader["permission"];
                         GlobalVar.點點卡點數 = (int)reader["points"];
                         GlobalVar.儲值金 = (int)reader["cash"];
-                        MessageBox.Show($"登入成功 !!, 歡迎{GlobalVar.使用者名稱}使用本程式. \n權限:{GlobalVar.使用者權限}");
+                        if (GlobalVar.使用者權限 >= 1000) { 
+                            MessageBox.Show($"登入成功 !!");
+                            Console.WriteLine($"登入成功 !!, 歡迎{GlobalVar.使用者名稱}使用本程式. \n權限:{GlobalVar.使用者權限}");
+                        }
+                        else if ((GlobalVar.使用者權限 >= 100) && (GlobalVar.使用者權限 < 1000))
+                        {
+                            MessageBox.Show($"登入成功 !!, 歡迎{GlobalVar.使用者名稱}使用本程式. \n職位:店員 \n權限:{GlobalVar.使用者權限}");
+                        }
+                        else if (GlobalVar.使用者權限 == 10)
+                        {
+                            MessageBox.Show($"登入成功 !!, 歡迎{GlobalVar.使用者名稱}使用本程式. \n職位:店長 \n權限:{GlobalVar.使用者權限}");
+                        }
+                        else
+                        {
+                            MessageBox.Show($"登入成功 !!, 歡迎{GlobalVar.使用者名稱}使用本程式. \n職位:系統管理員 \n權限:{GlobalVar.使用者權限}");
+                        }
                         reader.Close();
                         con.Close();
                         this.Close();
